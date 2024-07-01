@@ -28,16 +28,29 @@
             text-align:center;
         }
         .container{
-          margin-top:20px;
+          margin-top:4rem;
         }
         .card{
           border:5px solid rgb(52, 2, 99);
-          background-color:transparent;
+          background-color:rgb(52, 2, 99);
         }
         img{
           width:50%;
           margin:30px auto;
+          border-radius:15px;
+          box-shadow:10px 15px 5px;
+          animation: anima 1s ease-in-out infinite alternate;
         }
+
+        @keyframes anima{
+          from{
+            transform: translateY(-20px);
+          }
+          to{
+            transform: translateY(-5px);
+          }
+        }
+
       </style>
       <div class="container">
         <div class="row">
