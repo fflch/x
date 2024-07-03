@@ -27,6 +27,18 @@
             color:white;
             text-align:center;
         }
+        
+        b{
+          animation: nome 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes nome{
+          0%   {color: red;}
+          25%  {color: yellow;}
+          50%  {color: blue;}
+          100% {color: green;}
+        }
+
         .container{
           margin-top:4rem;
         }
@@ -39,7 +51,7 @@
           margin:30px auto;
           border-radius:15px;
           box-shadow:10px 15px 5px;
-          animation: anima 1s ease-in-out infinite alternate;
+          animation: anima 1.5s ease-in-out infinite alternate;
         }
 
         @keyframes anima{
@@ -60,7 +72,7 @@
               <div class="row">
                 <hr>
               </div>
-              <p>Chamo-me RAPHAEL</p>
+              <p>Chamo-me <b>RAPHAEL</b></p>
                 <img src="https://file.coinexstatic.com/2023-11-02/C24D778EAEEE7442297366BBC450A49C.png">
             </div>
           </div>
