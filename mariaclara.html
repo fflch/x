@@ -1,1 +1,71 @@
-Maria Clara Esteves Tameirão
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Você já tomou seu café hoje?</title>
+    <style>
+        body {
+            background-color: #4B0D0D; 
+            color: #F8E1E1; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #F2B6B6; 
+        }
+        .fun-section {
+            background-color: #7C1A1A; 
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .fun-section p {
+            font-size: 1.5em;
+        }
+        .fun-section button {
+            background-color: #F2B6B6; 
+            color: #4B0D0D;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .fun-section button:hover {
+            background-color: #F8E1E1; 
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 2em;
+        }
+        .emoji {
+            font-size: 5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá estranho 🤠</h1>
+    <div class="fun-section">
+        <p>Você já foi tomar seu cafe hoje?</p>
+        <button onclick="showMessage('yes')">Sim ☕</button>
+        <button onclick="showMessage('no')">Não 😞</button>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        function showMessage(answer) {
+            const messageElement = document.getElementById('message');
+
+            if (answer === 'yes') {
+                messageElement.textContent = 'Pode ir programar agora';
+            } else {
+                messageElement.textContent = 'Ta dormindo ainda né?';
+            }
+        }
+    </script>
+</body>
+</html>
