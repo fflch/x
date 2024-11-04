@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagem Interativa</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1f9639;
+            background-image: url('file:///home/luisa/Downloads/David-Bernie-Print-Free-Palestine-Palestinian-Poppy-I.jpg');
+            background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita que a imagem se repita */
+        }
+        .imagem {
+            width: 200px;
+            transition: transform 0.3s, left 0.3s, top 0.3s;
+            position: relative;
+        }
+        .imagem:hover {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+
+    <img src="file:///home/luisa/Downloads/palestinalivre.jpg" alt="Imagem Interativa" class="imagem" id="imagem">
+
+    <script>
+        const imagem = document.getElementById('imagem');
+        
+        document.addEventListener('mousemove', (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+
+            // Move a imagem levemente com base na posição do mouse
+            imagem.style.left = `${x * 0.05}px`;
+            imagem.style.top = `${y * 0.05}px`;
+        });
+    </script>
+
+</body>
+</html>
