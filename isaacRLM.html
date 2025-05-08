@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ISAAC DVD Bounce</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    #isaac {
+      position: absolute;
+      font-size: 4rem;
+      font-weight: bold;
+      color: white;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="isaac">ISAAC</div>
+
+  <script>
+    const isaac = document.getElementById('isaac');
+    let x = 100, y = 100;
+    let dx = 2, dy = 2;
+    const colors = ['red', 'lime', 'blue', 'orange', 'magenta', 'cyan', 'yellow', 'white'];
+    let currentColor = 'white';
+
+    function move() {
+      const rect = isaac.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      // Bounce and color change logic
+      let bounced = false;
+      if (x + rect.width >= vw || x <= 0) {
+        dx = -dx;
+        bounced = true;
+      }
+      if (y + rect.height >= vh || y <= 0) {
+        dy = -dy;
+        bounced = true;
+      }
+
+      if (bounced) {
+        changeColor();
+      }
+
+      x += dx;
+      y += dy;
+      isaac.style.left = x + 'px';
+      isaac.style.top = y + 'px';
+
+      requestAnimationFrame(move);
+    }
+
+    function changeColor() {
+      let newColor;
+      do {
+        newColor = colors[Math.floor(Math.random() * colors.length)];
+      } while (newColor === currentColor); // Ensure different color
