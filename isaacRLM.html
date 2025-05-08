@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ISAAC DVD Bounce</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    #isaac {
+      position: absolute;
+      font-size: 4rem;
+      font-weight: bold;
+      color: white;
+      user-select: none;
+      left: 100px;
+      top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="isaac">ISAAC</div>
+
+  <script>
+    const isaac = document.getElementById('isaac');
+    const colors = ['red', 'lime', 'blue', 'orange', 'magenta', 'cyan', 'yellow', 'white'];
+    let currentColor = 'white';
+
+    let x = 100;
+    let y = 100;
+    let dx = 2;
+    let dy = 2;
+
+    function changeColor() {
+      let newColor;
+      do {
+        newColor = colors[Math.floor(Math.random() * colors.length)];
+      } while (newColor === currentColor);
+      currentColor = newColor;
+      isaac.style.color = currentColor;
+    }
+
+    function move() {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const rect = isaac.getBoundingClientRect();
+      let bounced = false;
+
+      if (x + rect.width >= vw || x <= 0) {
+        dx = -dx;
+        bounced = true;
+      }
+      if (y + rect.height >= vh || y <= 0) {
+        dy = -dy;
+        bounced = true;
+      }
+
+      if (bounced) {
+        changeColor();
+      }
+
+      x += dx;
+      y += dy;
+      isaac.style.left = x + 'px';
+      isaac.style.top = y + 'px';
+
+      requestAnimationFrame(move);
+    }
+
+    // Wait for layout before starting animation
+    window.onload = () => {
+      move();
+    };
+  </script>
+</body>
+</html>
