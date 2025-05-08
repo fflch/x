@@ -16,6 +16,8 @@
       font-weight: bold;
       color: white;
       user-select: none;
+      left: 100px;
+      top: 100px;
     }
   </style>
 </head>
@@ -24,18 +26,29 @@
 
   <script>
     const isaac = document.getElementById('isaac');
-    let x = 100, y = 100;
-    let dx = 2, dy = 2;
     const colors = ['red', 'lime', 'blue', 'orange', 'magenta', 'cyan', 'yellow', 'white'];
     let currentColor = 'white';
 
+    let x = 100;
+    let y = 100;
+    let dx = 2;
+    let dy = 2;
+
+    function changeColor() {
+      let newColor;
+      do {
+        newColor = colors[Math.floor(Math.random() * colors.length)];
+      } while (newColor === currentColor);
+      currentColor = newColor;
+      isaac.style.color = currentColor;
+    }
+
     function move() {
-      const rect = isaac.getBoundingClientRect();
       const vw = window.innerWidth;
       const vh = window.innerHeight;
-
-      // Bounce and color change logic
+      const rect = isaac.getBoundingClientRect();
       let bounced = false;
+
       if (x + rect.width >= vw || x <= 0) {
         dx = -dx;
         bounced = true;
@@ -57,8 +70,10 @@
       requestAnimationFrame(move);
     }
 
-    function changeColor() {
-      let newColor;
-      do {
-        newColor = colors[Math.floor(Math.random() * colors.length)];
-      } while (newColor === currentColor); // Ensure different color
+    // Wait for layout before starting animation
+    window.onload = () => {
+      move();
+    };
+  </script>
+</body>
+</html>
