@@ -6,7 +6,8 @@
   <style>
   body {
   background-image: url('https://64.media.tumblr.com/801b3b973da589be8394abce849bff37/147bfebdf112f180-15/s1280x1920/09e7f375b82850d957f4a88976407984933710aa.gifv');
-  background-size: cover;
+  background-repeat: repeat; /* Repete a imagem */
+  background-size: auto; /* Mantém o tamanho original */
   background-attachment: fixed;
   font-family: Arial, sans-serif;
   text-align: center;
@@ -45,7 +46,7 @@
   h2 {
   font-size: 32px;
   margin-top: 40px;
-  color: #00796b;
+  color: #57eedc;
   }
 
   .nivel {
@@ -56,7 +57,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #004d40;
+  color: white; /* Define a cor do texto como branco */
   }
 
   .nivel img {
@@ -176,14 +177,16 @@
   <button onclick="alert('Isso não faz nada, mas foi divertido clicar!')">Clique aqui 😄</button>
   <button onclick="alert('Este aqui também não faz nada, mas já não foi tão divertido clicar.')">Clique aqui também 😅</button>
 
-  <audio controls loop>
+  <audio controls loop autoplay>
   <source src="https://www.bensound.com/bensound-music/bensound-orangeclouds.mp3" type="audio/mpeg">
   Seu navegador não suporta áudio.
   </audio>
 
   <div id="emoji-container"></div>
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/xIOg_K6Z1fg?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <h2>Como você se sente clicando nos botões deste site:</h2>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/xIOg_K6Z1fg?si=2lvlypOctMOJrraD" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
   <script>
   setInterval(() => {
