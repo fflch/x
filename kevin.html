@@ -1,32 +1,349 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+ <html lang="pt-BR">
+ <head>
   <meta charset="UTF-8">
-  <title>Minha Primeira Página</title>
+  <title>Evolução do Kevin</title>
   <style>
-    body {
-      background-color: #40E0D0; /* Azul-turquesa */
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
+  body {
+  background-image: url('https://64.media.tumblr.com/801b3b973da589be8394abce849bff37/147bfebdf112f180-15/s1280x1920/09e7f375b82850d957f4a88976407984933710aa.gifv');
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+  cursor: url('https://cur.cursors-4u.net/nature/nat-9/nat846.cur'), auto;
+  overflow-x: hidden;
+  color: white;
+  }
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 50px;
-    }
+  @keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+  }
 
-    img {
-      width: 300px;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    }
+  .mensagem {
+  font-size: 28px;
+  margin-bottom: 40px;
+  }
+
+  .kevin {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  animation: piscar 1s infinite;
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes piscar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+  }
+
+  h2 {
+  font-size: 32px;
+  margin-top: 40px;
+  color: #00796b;
+  }
+
+  .nivel {
+  margin: 40px 0;
+  }
+
+  .nivel p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #004d40;
+  }
+
+  .nivel img {
+  width: 300px;
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+
+  #emoji-container div {
+  position: absolute;
+  font-size: 24px;
+  animation: fall 3s linear;
+  }
+
+  @keyframes fall {
+  0% { top: 0; }
+  100% { top: 100vh; opacity: 0; }
+  }
+
+  button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #00bcd4;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  }
+
+  audio {
+  margin-top: 20px;
+  }
+
+  iframe {
+  margin-top: 40px;
+  border-radius: 12px;
+  }
+
+  #game {
+  border: 5px solid white;
+  }
+
+  #highscore {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: yellow; /* Uma cor diferente para destacar o highscore */
+  }
+
+  #restartButton {
+  display: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #f44336;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  }
+
+  #resetHighscore {
+  font-size: 14px;
+  padding: 5px 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #aaa;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
   </style>
-</head>
-<body>
-  <h1>Olá, galera! Espero aprender a mexer nisso aqui direito.</h1>
-  <img src="https://tenor.com/bN6JU.gif" alt="Typing Anime">
-</body>
-</html>
+ </head>
+ <body>
+
+  <div class="mensagem">
+  Olá pessoal sou o <span class="kevin">KEVIN</span> e quero aprender muitas coisas novas para poder ajudar vocês!
+  </div>
+
+  <h2>Coding evolution expectation</h2>
+
+  <div class="nivel">
+  <p>Level 1</p>
+  <img src="https://media1.tenor.com/m/aFm3VbhIa8cAAAAd/tutaloino27.gif" alt="Level 1">
+  </div>
+
+  <div class="nivel">
+  <p>Level 2</p>
+  <img src="https://media1.tenor.com/m/m5fd_3YpIEAAAAAC/michael-jackson-typing.gif" alt="Level 2">
+  </div>
+
+  <div class="nivel">
+  <p>Level 3</p>
+  <img src="https://media1.tenor.com/m/YjyN4su14BkAAAAd/persona-futaba.gif" alt="Level 3">
+  </div>
+
+  <div class="nivel">
+  <p>Level 4</p>
+  <img src="https://media1.tenor.com/m/o-wNCEq_6f0AAAAd/pompo-the-cinephile-typing-fast.gif" alt="Level 4">
+  </div>
+
+  <div class="nivel">
+  <p>Level 5</p>
+  <img src="https://media1.tenor.com/m/MsNWeCu7abkAAAAC/typing.gif" alt="Level 5">
+  </div>
+
+  <div class="nivel">
+  <p>Level 6</p>
+  <img src="https://media1.tenor.com/m/4O4pu_p8GXgAAAAd/furiously-typing-responding.gif" alt="Level 6">
+  </div>
+
+  <button onclick="alert('Isso não faz nada, mas foi divertido clicar!')">Clique aqui 😄</button>
+  <button onclick="alert('Este aqui também não faz nada, mas já não foi tão divertido clicar.')">Clique aqui também 😅</button>
+
+  <audio controls loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-orangeclouds.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+  </audio>
+
+  <div id="emoji-container"></div>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/xIOg_K6Z1fg?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <script>
+  setInterval(() => {
+  const emoji = document.createElement('div');
+  emoji.innerText = '💻';
+  emoji.style.left = `${Math.random() * 100}vw`;
+  emoji.style.top = '0';
+  emoji.style.position = 'absolute';
+  emoji.style.zIndex = '9999';
+  document.getElementById('emoji-container').appendChild(emoji);
+  setTimeout(() => emoji.remove(), 3000);
+  }, 300);
+
+  document.addEventListener('keydown', function(e) {
+  if (e.key.toLowerCase() === "k") {
+  alert("✨ KEVIN MODE ATIVADO ✨");
+  document.body.style.backgroundColor = "#000";
+  document.body.style.color = "#0f0";
+  }
+  });
+  </script>
+
+  <h2>Divirta-se e perca seu tempo com este extraordinário jogo</h2>
+  <div id="score">Pontuação: 0</div>
+  <div id="highscore">Highscore: 0</div>
+  <canvas id="game" width="400" height="400"></canvas>
+  <button id="restartButton">Reiniciar Jogo</button>
+  <button id="resetHighscore">Resetar Highscore</button>
+
+  <div id="emoji-container"></div>
+
+  <script>
+  setInterval(() => {
+  const emoji = document.createElement('div');
+  emoji.innerText = '💻';
+  emoji.style.left = `${Math.random() * 100}vw`;
+  emoji.style.top = '0';
+  emoji.style.position = 'absolute';
+  emoji.style.zIndex = '9999';
+  document.getElementById('emoji-container').appendChild(emoji);
+  setTimeout(() => emoji.remove(), 3000);
+  }, 300);
+
+  document.addEventListener('keydown', function(e) {
+  if (e.key.toLowerCase() === "k") {
+  alert("✨ KEVIN MODE ATIVADO ✨");
+  document.body.style.backgroundColor = "#000";
+  document.body.style.color = "#0f0";
+  }
+  });
+
+  // Jogo Snake
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
+  const box = 20;
+  let score = 0;
+  let highscore = localStorage.getItem('highscore') || 0; // Carrega o highscore ou define como 0
+  document.getElementById("highscore").innerText = "Highscore: " + highscore;
+
+  let snake = [];
+  snake[0] = { x: 9 * box, y: 10 * box };
+
+  let food = {
+  x: Math.floor(Math.random() * 19 + 1) * box,
+  y: Math.floor(Math.random() * 19 + 1) * box
+  };
+
+  let d;
+  document.addEventListener("keydown", direction);
+
+  function direction(event) {
+  if (event.key === "ArrowLeft" && d !== "RIGHT") d = "LEFT";
+  else if (event.key === "ArrowUp" && d !== "DOWN") d = "UP";
+  else if (event.key === "ArrowRight" && d !== "LEFT") d = "RIGHT";
+  else if (event.key === "ArrowDown" && d !== "UP") d = "DOWN";
+  }
+
+  function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < snake.length; i++) {
+  ctx.fillStyle = i === 0 ? "green" : "lightgreen";
+  ctx.fillRect(snake[i].x, snake[i].y, box, box);
+  }
+
+  ctx.fillStyle = "red";
+  ctx.fillRect(food.x, food.y, box, box);
+
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
+
+  if (d === "LEFT") snakeX -= box;
+  if (d === "UP") snakeY -= box;
+  if (d === "RIGHT") snakeX += box;
+  if (d === "DOWN") snakeY += box;
+
+  if (snakeX === food.x && snakeY === food.y) {
+  score++;
+  document.getElementById("score").innerText = "Pontuação: " + score;
+  food = {
+  x: Math.floor(Math.random() * 19 + 1) * box,
+  y: Math.floor(Math.random() * 19 + 1) * box
+  };
+  } else {
+  snake.pop();
+  }
+
+  let newHead = { x: snakeX, y: snakeY };
+
+  if (
+  snakeX < 0 || snakeX >= canvas.width ||
+  snakeY < 0 || snakeY >= canvas.height ||
+  collision(newHead, snake)
+  ) {
+  clearInterval(game);
+  document.getElementById("restartButton").style.display = "block";
+
+  if (score > highscore) {
+  highscore = score;
+  localStorage.setItem('highscore', highscore);
+  document.getElementById("highscore").innerText = "Highscore: " + highscore;
+  }
+  }
+
+  snake.unshift(newHead);
+  }
+
+  function collision(head, array) {
+  for (let i = 0; i < array.length; i++) {
+  if (head.x === array[i].x && head.y === array[i].y) {
+  return true;
+  }
+  }
+  return false;
+  }
+
+  let game = setInterval(draw, 100);
+
+  // Reiniciar o jogo
+  document.getElementById("restartButton").addEventListener("click", function() {
+  score = 0;
+  document.getElementById("score").innerText = "Pontuação: 0";
+  snake = [{ x: 9 * box, y: 10 * box }];
+  food = {
+  x: Math.floor(Math.random() * 19 + 1) * box,
+  y: Math.floor(Math.random() * 19 + 1) * box
+  };
+  d = undefined;
+  document.getElementById("restartButton").style.display = "none";
+  clearInterval(game);
+  game = setInterval(draw, 100);
+  });
+
+  // Resetar Highscore
+  document.getElementById("resetHighscore").addEventListener("click", function() {
+  highscore = 0;
+  localStorage.setItem('highscore', highscore);
+  document.getElementById("highscore").innerText = "Highscore: " + highscore;
+  });
+  </script>
+
+ </body>
+ </html>
