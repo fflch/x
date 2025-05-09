@@ -2,78 +2,231 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ISAAC DVD Bounce</title>
+  <title>Isaac Breakout</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
       background-color: black;
     }
-
     #isaac {
       position: absolute;
-      font-size: 4rem;
-      font-weight: bold;
+      font-size: 50px;
+      font-family: Arial, sans-serif;
       color: white;
       user-select: none;
-      left: 100px;
-      top: 100px;
+    }
+    #paddle {
+      position: absolute;
+      bottom: 30px;
+      width: 150px;
+      height: 20px;
+      background-color: white;
+      left: 10%;
+    }
+    #score {
+      position: fixed;
+      top: 200px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 550px;
+      font-family: Arial, sans-serif;
+      color: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #pauseBtn, #playAgainBtn {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1;
+    }
+    #playAgainBtn {
+      top: 80px;
+    }
+    .brick {
+      position: absolute;
+      width: 60px;
+      height: 25px;
+      background-color: red;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
-  <div id="isaac">ISAAC</div>
 
-  <script>
-    const isaac = document.getElementById('isaac');
-    const colors = ['red', 'lime', 'blue', 'orange', 'magenta', 'cyan', 'yellow', 'white'];
-    let currentColor = 'white';
+<div id="score">0</div>
+<button id="pauseBtn">Pause</button>
+<button id="playAgainBtn" style="display: none;">Play Again</button>
+<div id="isaac">Isaac</div>
+<div id="paddle"></div>
 
-    let x = 100;
-    let y = 100;
-    let dx = 2;
-    let dy = 2;
+<script>
+  const isaac = document.getElementById("isaac");
+  const paddle = document.getElementById("paddle");
 
-    function changeColor() {
-      let newColor;
-      do {
-        newColor = colors[Math.floor(Math.random() * colors.length)];
-      } while (newColor === currentColor);
-      currentColor = newColor;
-      isaac.style.color = currentColor;
+  let x = 500 , y = 500;
+  let dx = 2.5, dy = 2.5;
+  let dragging = false;
+  let offsetX, offsetY;
+
+  let paddleX = window.innerWidth / 2 - 75;
+  const paddleSpeed = 10;
+  const keys = { left: false, right: false };
+
+  let score = 0;
+  const scoreDisplay = document.getElementById("score");
+  const pauseBtn = document.getElementById("pauseBtn");
+  const playAgainBtn = document.getElementById("playAgainBtn");
+  let paused = false;
+  let gameOver = false;
+
+  pauseBtn.addEventListener("click", () => {
+  paused = !paused;
+  pauseBtn.textContent = paused ? "Resume" : "Pause";
+});
+  playAgainBtn.addEventListener("click", () => {
+  location.reload(); // Quick restart
+});
+
+  const bricks = [];
+  const brickRows = 4;
+  const brickCols = Math.floor(window.innerWidth / 70);
+  const brickWidth = 60;
+  const brickHeight = 25;
+  const brickPadding = 10;
+  const brickTopOffset = 50;
+
+  function randomColor() {
+    return 'hsl(' + Math.floor(Math.random() * 360) + ', 100%, 60%)';
+  }
+
+  // Create bricks
+  for (let row = 0; row < brickRows; row++) {
+    const rowColor = randomColor(); // One color per row
+    for (let col = 0; col < brickCols; col++) {
+      const brick = document.createElement("div");
+      brick.classList.add("brick");
+      brick.style.left = (col * (brickWidth + brickPadding)) + "px";
+      brick.style.top = (brickTopOffset + row * (brickHeight + brickPadding)) + "px";
+      brick.style.backgroundColor = rowColor;
+      document.body.appendChild(brick);
+      bricks.push(brick);
+    }
+  }
+
+  function moveIsaac() {
+    if (paused || gameOver) {
+      requestAnimationFrame(moveIsaac);
+      return;
     }
 
-    function move() {
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
+    if (!dragging) {
       const rect = isaac.getBoundingClientRect();
-      let bounced = false;
+      const paddleRect = paddle.getBoundingClientRect();
+      const screenW = window.innerWidth;
+      const screenH = window.innerHeight;
 
-      if (x + rect.width >= vw || x <= 0) {
+      // Wall collisions
+      if (x + rect.width >= screenW || x <= 0) {
         dx = -dx;
-        bounced = true;
+        isaac.style.color = randomColor();
       }
-      if (y + rect.height >= vh || y <= 0) {
+      if (y <= 0) {
         dy = -dy;
-        bounced = true;
+        isaac.style.color = randomColor();
       }
 
-      if (bounced) {
-        changeColor();
+      // Paddle collision
+      if (
+        y + rect.height >= paddleRect.top &&
+        x + rect.width >= paddleRect.left &&
+        x <= paddleRect.right &&
+        y + rect.height <= paddleRect.bottom + 10
+      ) {
+        dy = -Math.abs(dy);
+        isaac.style.color = randomColor();
+      }
+
+      // Bottom of screen — lose condition
+      if (y + rect.height >= screenH) {
+        gameOver = true;
+        playAgainBtn.style.display = "block";
+        return;
+      }
+
+      // Brick collisions
+      for (let i = bricks.length - 1; i >= 0; i--) {
+        const brick = bricks[i];
+        const brickRect = brick.getBoundingClientRect();
+        if (
+          x + rect.width >= brickRect.left &&
+          x <= brickRect.right &&
+          y + rect.height >= brickRect.top &&
+          y <= brickRect.bottom
+        ) {
+          // Bounce and remove brick
+          dy = -dy;
+          brick.remove();
+          bricks.splice(i, 1);
+          score++;
+          scoreDisplay.textContent = score;
+
+          // Increase speed every 5 points
+          if (score % 5 === 0) {
+            dx *= 1.2;
+            dy *= 1.2;
+          }
+          isaac.style.color = randomColor();
+          break; // only hit one brick per frame
+        }
       }
 
       x += dx;
       y += dy;
-      isaac.style.left = x + 'px';
-      isaac.style.top = y + 'px';
 
-      requestAnimationFrame(move);
+      isaac.style.left = x + "px";
+      isaac.style.top = y + "px";
     }
 
-    // Wait for layout before starting animation
-    window.onload = () => {
-      move();
-    };
-  </script>
+    requestAnimationFrame(moveIsaac);
+  }
+
+
+  function updatePaddle() {
+    if (keys.left) {
+      paddleX -= paddleSpeed;
+      if (paddleX < 0) paddleX = 0;
+    }
+    if (keys.right) {
+      paddleX += paddleSpeed;
+      const maxRight = window.innerWidth - paddle.offsetWidth;
+      if (paddleX > maxRight) paddleX = maxRight;
+    }
+    paddle.style.left = paddleX + "px";
+
+    requestAnimationFrame(updatePaddle);
+  }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "ArrowLeft") keys.left = true;
+    if (e.key === "ArrowRight") keys.right = true;
+  });
+
+  document.addEventListener("keyup", function(e) {
+    if (e.key === "ArrowLeft") keys.left = false;
+    if (e.key === "ArrowRight") keys.right = false;
+  });
+
+  moveIsaac();
+  updatePaddle();
+</script>
+
 </body>
 </html>
