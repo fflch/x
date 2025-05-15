@@ -1,14 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alan</title>
-  </head>
-  <body>
-    <h1>Olá devs :)</h1>
-    <p>Prazer, meu nome é Alan Neves<br /></p>
-    <p>Este é meu github:</p>
-    <a href="https://github.com/alan-neves">clique aqui</a>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alan Neves - Estagiário</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+
+    .subtitle {
+      font-size: 1.5em;
+      color: #ccc;
+      margin-bottom: 2em;
+    }
+
+    .photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      margin-bottom: 1.5em;
+    }
+
+    .intro {
+      max-width: 600px;
+      margin: 0 auto 2em auto;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    a.github-link {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 10px 20px;
+      background-color: #1DB954;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    a.github-link:hover {
+      background-color: #1aa34a;
+    }
+
+    footer {
+      margin-top: 4em;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    /* Animação de entrada */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      animation: fadeIn 1s ease-in;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://github.com/alan-neves.png" alt="Foto de Alan" class="photo">
+    <!-- Substitua "yourgithubID" pelo seu ID do GitHub para puxar a foto direto de lá, ou use outra URL -->
+
+    <h1>Olá, devs!</h1>
+    <div class="subtitle">Boas vindas ao meu espaço :)</div>
+
+    <p class="intro">
+      Me chamo <strong>Alan Neves</strong> e sou estagiário em Desenvolvimento de Sistemas na STI-FFLCH.
+      Atualmente estou aprendendo análise de projetos e desenvolvimento de sistemas, bancos de dados, sistemas embarcados, programação de aplicativos mobile e desenvolvimento web.
+    </p>
+
+    <a class="github-link" href="https://github.com/alan-neves" target="_blank">Visite meu GitHub</a>
+
+    <footer>
+      Alan Neves | 2025
+    </footer>
+  </div>
+</body>
 </html>
