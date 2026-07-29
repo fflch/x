@@ -41,6 +41,29 @@
       line-height: 1.6;
     }
 
+    /* Estilo para links dentro do intro */
+  .intro a {
+    color: #1DB954;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .intro a:hover {
+    color: #1aa34a;
+    text-decoration: underline;
+  }
+
+  /* Estilo para links normais */
+  a:not(.github-link) {
+    color: #1DB954;
+    text-decoration: none;
+  }
+
+  a:not(.github-link):hover {
+    text-decoration: underline;
+  }
+
     a.github-link {
       display: inline-block;
       margin-top: 1em;
@@ -77,21 +100,32 @@
 <body>
   <div class="container">
     <img src="https://github.com/alan-neves.png" alt="Foto de Alan" class="photo">
-    <!-- Substitua "yourgithubID" pelo seu ID do GitHub para puxar a foto direto de lá, ou use outra URL -->
 
     <h1>Olá, devs!</h1>
     <div class="subtitle">Boas vindas ao meu espaço :)</div>
 
     <p class="intro">
-      Me chamo <strong>Alan Neves</strong> e sou estagiário em Desenvolvimento de Sistemas na STI-FFLCH.
-      Atualmente estou aprendendo análise de projetos e desenvolvimento de sistemas, bancos de dados, sistemas embarcados, programação de aplicativos mobile e desenvolvimento web.
+      Me chamo <strong>Alan Neves</strong>, fui estagiário em Desenvolvimento de Sistemas na Seção Técnica de Informática da FFLCH e trabalhei em projetos Laravel. <br><br>
+
+      Sistemas em que contribuí: <br>
+      <a href="https://github.com/fflch/fechaduras">Fechaduras FFLCH</a><br>
+      <a href="https://github.com/fflch/rede">Rede FFLCH</a>
     </p>
 
     <a class="github-link" href="https://github.com/alan-neves" target="_blank">Visite meu GitHub</a>
 
     <footer>
-      Alan Neves | 2025
+      Alan Neves | <span id="dataAtual"></span>
     </footer>
+
+    <script>
+    function atualizarData() {
+      const agora = new Date();
+      const ano = agora.getFullYear();
+      document.getElementById('dataAtual').textContent = ano;
+    }
+    atualizarData();
+  </script>
   </div>
 </body>
 </html>
